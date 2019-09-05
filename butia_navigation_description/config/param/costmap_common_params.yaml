@@ -17,17 +17,28 @@ obstacle_layer:
   combination_method:   1
   track_unknown_space:  true    # true needed for disabling global path planning through unknown space
   footprint_clearing_enabled: true
-  obstacle_range: 3.5
-  raytrace_range: 4.0
+  # obstacle_range: 3.5
+  # raytrace_range: 4.0
   publish_voxel_map: false
-  observation_sources:  scan
-  scan:
+  observation_sources:  body_scan ground_scan
+  body_scan:
     data_type: LaserScan
     topic: scan
     marking: true   # whether the sensor will be used to add obstacle information to the costmap
     clearing: true  # whether the sensor will be used to clear obstacle information from the costmap
-    min_obstacle_height: 0.25
-    max_obstacle_height: 0.35
+    min_obstacle_height: 0.68
+    max_obstacle_height: 1.90
+    observation_persistence: 0.0  # parametros sendo testados
+    obstacle_range: 10.0
+    raytrace_range: 10.0
+    inf_is_valid: true
+  ground_scan:
+    data_type: LaserScan
+    topic: scan2
+    marking: true   # whether the sensor will be used to add obstacle information to the costmap
+    clearing: true  # whether the sensor will be used to clear obstacle information from the costmap
+    min_obstacle_height: 0.05
+    max_obstacle_height: 0.68
     observation_persistence: 0.0  # parametros sendo testados
     raytrace_range: 4.0
     inf_is_valid: true
